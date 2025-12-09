@@ -144,20 +144,16 @@ export default function UltimateAIInbox() {
   };
 
   // Bulk AI Reply
-  const handleBulkReply = () => {
-    toast({
-      title: "Sending to 12 leads",
-      description: "AI is writing personalized replies...",
-    });
-    setTimeout(() => {
-      toast({
-        title: "12 replies sent",
-        description: "All threads stopped. CRM updated.",
-      });
-      setSelectedThreads(new Set());
-      setIsBulkMode(false);
-    }, 2000);
-  };
+const handleBulkReply = () => {
+  toast("Sending to 12 leads. AI is writing personalized replies...");
+
+  setTimeout(() => {
+    toast.success("12 replies sent. All threads stopped and CRM updated.");
+    setSelectedThreads(new Set());
+    setIsBulkMode(false);
+  }, 2000);
+};
+
 
   const getSentimentBadge = (sentiment: Sentiment) => {
     const map = {
