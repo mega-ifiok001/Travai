@@ -14,12 +14,13 @@ import * as z from "zod";
 import { cn } from "@/lib/utils";
 
 // Mock data (replace with API fetch)
-const initialReps = [
-  { id: "1", name: "Sarah Johnson", email: "sarah@acme.com", phone: "+1 (555) 123-4567", role: "SDR", status: "active", team: "East Coast" },
-  { id: "2", name: "Mike Chen", email: "mike@acme.com", phone: "+1 (555) 987-6543", role: "AE", status: "inactive", team: "West Coast" },
-  { id: "3", name: "Emily Rodriguez", email: "emily@acme.com", phone: "+1 (555) 456-7890", role: "SDR", status: "active", team: "East Coast" },
-  { id: "4", name: "David Kim", email: "david@acme.com", phone: "+1 (555) 321-0987", role: "AE", status: "active", team: "West Coast" },
+const initialReps: Rep[] = [
+  { id: "1", name: "John", email: "john@example.com", phone: "123", role: "SDR", team: "Team A" },
+  { id: "2", name: "Alice", email: "alice@example.com", phone: "456", role: "AE", team: "Team B" },
+  { id: "3", name: "Bob", email: "bob@example.com", phone: "789", role: "Manager", team: "Team C" },
+  
 ];
+
 
 const repSchema = z.object({
   name: z.string().min(1, "Name is required"),
