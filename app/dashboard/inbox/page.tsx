@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -10,17 +10,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-// import { Separator } from "@/components/ui/separator";
-// import { toast } from "@/components/ui/use-toast";
-import { toast } from "react-hot-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 import {
   Sparkles,
-  Reply,
   Calendar,
-  CheckCircle2,
   Pause,
-  Trash2,
   Send,
   Loader2,
   CheckCheck,
@@ -86,20 +81,6 @@ const mockThreads: Thread[] = [
     replied: true,
     crmSynced: true,
   },
-  {
-    id: "4",
-    from: "Alex Kim",
-    company: "Brex",
-    avatar: "AK",
-    subject: "Out of office",
-    preview: "I’m OOO until Jan 6th",
-    body: "I’m OOO until Jan 6th — will reply then!",
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48),
-    sentiment: "ooo",
-    replied: false,
-    crmSynced: false,
-  },
-  // Add more threads...
 ];
 
 export default function UltimateAIInbox() {
@@ -110,8 +91,8 @@ export default function UltimateAIInbox() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedThreads, setSelectedThreads] = useState<Set<string>>(new Set());
   const [isBulkMode, setIsBulkMode] = useState(false);
+  const { toast } = useToast();
 
-  // Bulk selection
   const toggleSelect = (id: string) => {
     const newSet = new Set(selectedThreads);
     if (newSet.has(id)) newSet.delete(id);
@@ -130,30 +111,26 @@ export default function UltimateAIInbox() {
     }
   };
 
-  // AI Reply Generation
   const generateAISuggestions = () => {
     setIsGenerating(true);
     setTimeout(() => {
       setAiSuggestions([
-        "Love to hear that! Are you free for a 15-min call next Tue/Wed? Here's my calendar: calendly.com/demo",
-        "Amazing timing — most teams see 3–5x more meetings after hiring new AEs. Quick question: who owns outbound today?",
+        "Love to hear that! Are you free for a 15-min call next Tue/Wed?",
+        "Amazing timing — most teams see 3–5x more meetings after hiring new AEs.",
         "Perfect! Would you be open to a quick 10-min sync? No pressure — just exploring.",
       ]);
       setIsGenerating(false);
     }, 1300);
   };
 
-  // Bulk AI Reply
-const handleBulkReply = () => {
-  toast("Sending to 12 leads. AI is writing personalized replies...");
-
-  setTimeout(() => {
-    toast.success("12 replies sent. All threads stopped and CRM updated.");
-    setSelectedThreads(new Set());
-    setIsBulkMode(false);
-  }, 2000);
-};
-
+  const handleBulkReply = () => {
+    toast({ title: "Sending to 12 leads", description: "AI is writing personalized replies..." });
+    setTimeout(() => {
+      toast({ title: "12 replies sent", description: "All threads stopped. CRM updated." });
+      setSelectedThreads(new Set());
+      setIsBulkMode(false);
+    }, 2000);
+  };
 
   const getSentimentBadge = (sentiment: Sentiment) => {
     const map = {
@@ -196,21 +173,17 @@ const handleBulkReply = () => {
         )}
 
         <Tabs defaultValue="unreplied" className="flex-1 flex flex-col">
-          <TabsList className="grid grid-cols-5  mt-4">
-            <TabsTrigger value="all" className="text-xs ">All</TabsTrigger>
-            <TabsTrigger value="unreplied" className="text-xs">
-              Unreplied <Badge className="">23</Badge>
-            </TabsTrigger>
+          <TabsList className="grid grid-cols-5 mt-4">
+            <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
+            <TabsTrigger value="unreplied" className="text-xs">Unreplied <Badge>23</Badge></TabsTrigger>
             <TabsTrigger value="positive" className="text-xs">Positive</TabsTrigger>
-            <TabsTrigger value="meetings">
-              Meetings <Badge className="">9</Badge>
-            </TabsTrigger>
+            <TabsTrigger value="meetings">Meetings <Badge>9</Badge></TabsTrigger>
             <TabsTrigger value="ooo" className="text-xs">OOO</TabsTrigger>
           </TabsList>
 
           <TabsContent value="unreplied" className="flex-1">
             <ScrollArea className="h-full">
-              <div className="">
+              <div>
                 <label className="flex items-center mb-4 cursor-pointer">
                   <Checkbox checked={selectedThreads.size === threads.length} onCheckedChange={selectAll} />
                   <span className="text-sm">Select all</span>
@@ -221,9 +194,7 @@ const handleBulkReply = () => {
                 <div
                   key={thread.id}
                   onClick={() => !isBulkMode && setSelectedThread(thread)}
-                  className={`p-4 border-b hover:bg-muted/50 cursor-pointer transition group ${
-                    selectedThread?.id === thread.id ? "bg-muted" : ""
-                  }`}
+                  className={`p-4 border-b hover:bg-muted/50 cursor-pointer transition group ${selectedThread?.id === thread.id ? "bg-muted" : ""}`}
                 >
                   <div className="flex items-start gap-3">
                     <Checkbox
@@ -334,9 +305,7 @@ const handleBulkReply = () => {
                   <Pause className="h-4 w-4" /> Stop Sequence
                 </Button>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Ctrl+Enter to send
-              </p>
+              <p className="text-sm text-muted-foreground">Ctrl+Enter to send</p>
             </div>
           </div>
         </div>
