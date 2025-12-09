@@ -80,11 +80,11 @@ export default function DashboardHome() {
 
 {/* stat grid card overview */}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-  <StatCard label="Lead Pool" value="284"  change={12} trend="up" />
-  <StatCard label="Reached Leads" value="1,240" change={8} trend="up" />
-  <StatCard label="Interaction Rate" value="34.2%" change={3} trend="up" />
-  <StatCard label="Response Rate" value="34.2%" change={3} trend="up" />
-  <StatCard label="Delivery Failure Rate" value="0%" change={0} trend="down" />
+<StatCard label="Lead Pool" value={284} change={12} trend="up" />
+<StatCard label="Reached Leads" value={1240} change={8} trend="up" />
+<StatCard label="Interaction Rate" value={34.2} change={3} trend="up" />
+<StatCard label="Response Rate" value={34.2} change={3} trend="up" />
+<StatCard label="Meetings Booked" value={32} change={-2} trend="down" />
 </div>
 
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
