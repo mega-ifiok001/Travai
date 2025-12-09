@@ -174,11 +174,11 @@ export default function UltimateAIInbox() {
 
         <Tabs defaultValue="unreplied" className="flex-1 flex flex-col">
           <TabsList className="grid grid-cols-5 mt-4">
-            <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
-            <TabsTrigger value="unreplied" className="text-xs">Unreplied <Badge>23</Badge></TabsTrigger>
-            <TabsTrigger value="positive" className="text-xs">Positive</TabsTrigger>
+            <TabsTrigger value="all" className="text-sm">All</TabsTrigger>
+            <TabsTrigger value="unreplied" className="text-sm">Unreplied <Badge>23</Badge></TabsTrigger>
+            <TabsTrigger value="positive" className="text-sm">Positive</TabsTrigger>
             <TabsTrigger value="meetings">Meetings <Badge>9</Badge></TabsTrigger>
-            <TabsTrigger value="ooo" className="text-xs">OOO</TabsTrigger>
+            <TabsTrigger value="ooo" className="text-sm">OOO</TabsTrigger>
           </TabsList>
 
           <TabsContent value="unreplied" className="flex-1">
@@ -209,7 +209,7 @@ export default function UltimateAIInbox() {
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <p className="font-semibold">{thread.from}</p>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-sm text-muted-foreground">
                           {formatDistanceToNow(thread.timestamp, { addSuffix: true })}
                         </span>
                       </div>
@@ -217,8 +217,8 @@ export default function UltimateAIInbox() {
                       <p className="text-sm mt-1 line-clamp-2">{thread.preview}</p>
                       <div className="flex items-center gap-2 mt-3">
                         {getSentimentBadge(thread.sentiment)}
-                        {!thread.replied && <Badge variant="outline" className="text-xs">Unreplied</Badge>}
-                        {thread.crmSynced && <Badge variant="outline" className="text-xs flex items-center gap-1"><Building className="h-3 w-3" /> Synced</Badge>}
+                        {!thread.replied && <Badge variant="outline" className="text-sm">Unreplied</Badge>}
+                        {thread.crmSynced && <Badge variant="outline" className="text-sm flex items-center gap-1"><Building className="h-3 w-3" /> Synced</Badge>}
                       </div>
                     </div>
                   </div>
@@ -251,7 +251,7 @@ export default function UltimateAIInbox() {
           <ScrollArea className="flex-1 p-6">
             <Card className="p-6 mb-6">
               <p className="whitespace-pre-wrap">{selectedThread.body}</p>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-sm text-muted-foreground mt-4">
                 {selectedThread.timestamp.toLocaleString()}
               </p>
             </Card>
@@ -277,8 +277,8 @@ export default function UltimateAIInbox() {
                 >
                   <p className="text-sm">{s}</p>
                   <div className="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition">
-                    <Button size="xs">Use this</Button>
-                    <Button size="xs" variant="ghost">Edit</Button>
+                    <Button size="sm">Use this</Button>
+                    <Button size="sm" variant="ghost">Edit</Button>
                   </div>
                 </div>
               ))}
