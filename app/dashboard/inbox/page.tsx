@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 // import { Separator } from "@/components/ui/separator";
 // import { toast } from "@/components/ui/use-toast";
+import { toast } from "react-hot-toast";
+
 import {
   Sparkles,
   Reply,
