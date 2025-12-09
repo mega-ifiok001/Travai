@@ -132,7 +132,6 @@ export default function LeadsEnrichPage() {
               },
               {
                 key: "status",
-                key: "status",
                 label: "Status",
                 render: (status) => status === "enriched" ? <Badge className="bg-accent text-foreground">Ready</Badge> : <Badge variant="secondary">Partial</Badge>
               },
