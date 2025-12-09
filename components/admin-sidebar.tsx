@@ -28,7 +28,7 @@ const navItems = [
   { label: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 
-export function DashboardSidebar() {
+export function AdminSidebar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
