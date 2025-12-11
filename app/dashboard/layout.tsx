@@ -1,6 +1,6 @@
 import type React from "react";
-import { DashboardSidebar } from "@/components/dashboard-sidebar";
-import { DashboardHeader } from "@/components/dashboard-header";
+import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar";
+import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { ToastProvider } from "@/components/ui/use-toast";
 
 export default function DashboardLayout({
@@ -13,7 +13,7 @@ export default function DashboardLayout({
       <div className="min-h-screen bg-background">
         <DashboardSidebar />
         <DashboardHeader />
-        <main className="md:ml-64 pt-16 md:pt-20">{children}</main>
+        <main className="md:ml-52 ">{children}</main>
       </div>
     </ToastProvider>
   );

@@ -74,7 +74,7 @@ const DailyOutreachSummary: React.FC<DailyOutreachSummaryProps> = ({
   return (
     <div className="group relative p-1">
       {/* Gradient Border Glow */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-700" />
+      <div className="absolute -inset-1 bg-[#081ab3] rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-700" />
 
       {/* Glass Card */}
       <div className="relative h-full rounded-3xl bg-white/80 backdrop-blur-xl border border-white/30 shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
@@ -148,7 +148,7 @@ const DailyOutreachSummary: React.FC<DailyOutreachSummaryProps> = ({
             {/* Emails */}
             <div className="flex items-center justify-between group/item">
               <div className="flex items-center gap-4">
-                <div className="p-2 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25">
+                <div className="p-2 rounded-2xl bg-gradient-to-br from-[#081ab3] to-[#000] hover:scale-[1.03]shadow-lg shadow-blue-500/25">
                   <Mail size={15} className="text-white" />
                 </div>
                 <div>
@@ -164,7 +164,7 @@ const DailyOutreachSummary: React.FC<DailyOutreachSummaryProps> = ({
             {/* LinkedIn */}
             <div className="flex items-center justify-between group/item">
               <div className="flex items-center gap-4">
-                <div className="p-2 rounded-2xl bg-gradient-to-br from-[#0077b5] to-[#00a0dc] shadow-lg shadow-linkedin/30">
+                <div className="p-2 rounded-2xl bg-gradient-to-br from-[#081ab3] to-[#000] hover:scale-[1.03] shadow-lg shadow-linkedin/30">
                   <Linkedin size={15} className="text-white" />
                 </div>
                 <div>
@@ -182,7 +182,7 @@ const DailyOutreachSummary: React.FC<DailyOutreachSummaryProps> = ({
           <div className="mt-8 pt-6 border-t border-white/30 flex items-center justify-between">
             <span className="text-sm font-semibold text-gray-600 tracking-wider">Total Today: {animatedTotal}</span>
             <Link href="/dashboard/settings">
-              <button className="px-3 py-2 text-xs cursor-pointer transition bg-blue-600 text-white rounded-md hover:scale-[1.05]">
+              <button className="px-3 py-2 text-xs cursor-pointer transition bg-[#081ab3] text-white rounded-md hover:scale-[1.05]">
                 Update Activity
               </button>
             </Link>

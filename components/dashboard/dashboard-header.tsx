@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip"
-
+import NotificationBell from "@/components/notification"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,22 +31,7 @@ export function DashboardHeader() {
 {/* Notifications */}
 <Tooltip>
   <TooltipTrigger asChild>
-    <Button
-      variant="ghost"
-      size="icon"
-      className="cursor-pointer relative hover:text-black hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full"
-    >
-      <Bell className="h-4 w-4" />
-      {notifications > 0 && (
-        <motion.span
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold flex items-center justify-center"
-        >
-          {notifications}
-        </motion.span>
-      )}
-    </Button>
+   <NotificationBell />
   </TooltipTrigger>
   <TooltipContent className="rounded-xl px-3 py-1.5 text-xs bg-black text-white">
     Notifications
@@ -92,7 +77,7 @@ export function DashboardHeader() {
         <DropdownMenuTrigger asChild>
     <Button variant="ghost" className="flex cursor-pointer items-center gap-3 px-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
       <Avatar className="h-6 w-6 ring-2 ring-blue-500/20">
-        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-bold text-sm">
+        <AvatarFallback className="bg-gradient-to-br from-[#081ab3] to-[#000] hover:scale-[1.03] text-white font-bold text-sm">
           JD
         </AvatarFallback>
       </Avatar>

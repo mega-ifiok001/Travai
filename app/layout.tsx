@@ -11,23 +11,23 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "AI Sales Automator - Automate Your Sales & Marketing",
   description: "Generate leads, send messages, close deals – all on autopilot with AI",
-  generator: "v0.app",
+  generator: "PlusCode AI",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/favicon.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/favicon.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/favicon.png",
   },
 }
 

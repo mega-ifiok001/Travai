@@ -9,7 +9,7 @@ import { Card } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Eye, EyeOff, ArrowLeft, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
-
+import SuccessModal from "@/components/modals/successModal"
 const industries = [
   "E-commerce", "Real Estate", "Restaurant", "SaaS", "Agency", "Coaching", "Consulting", "Healthcare", "Education", "Local Business", "Other"
 ]
@@ -23,23 +23,24 @@ export default function SignupPage() {
   const [industry, setIndustry] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
+const [showSuccess, setShowSuccess] = useState(false)
   const isStep1Valid = email.includes("@") && password.length >= 8 && password === confirmPassword
   const isStep2Valid = businessName.trim() && industry && industry !== "Select an industry"
 
   const handleNext = () => {
     if (step === 1 && isStep1Valid) setStep(2)
-    if (step === 2 && isStep2Valid) {
-      setIsLoading(true)
-      setTimeout(() => {
-        setIsLoading(false)
-        alert("Account created! Welcome to TravAI")
-      }, 1200)
-    }
+   if (step === 2 && isStep2Valid) {
+  setIsLoading(true)
+  setTimeout(() => {
+    setIsLoading(false)
+    setShowSuccess(true)  
+  }, 1200)
+}
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-black dark:via-slate-950 dark:to-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
+   <>
+    <div className="min-h-screen bg-gradient-to-br  bg-gradient-to-br from-slate-50 via-[#d9e0e8] to-[#9ebcde] dark:from-black dark:via-slate-950 dark:to-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
       {/* Floating background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute top-10 left-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
@@ -60,11 +61,12 @@ export default function SignupPage() {
         className="w-full max-w-sm"
       >
         <Card className="border-0 shadow-2xl backdrop-blur-xl bg-white/90 dark:bg-slate-900/95">
-          <div className="p-3">
+          <div className="py-2 px-3">
             {/* Logo + Title */}
             <div className="text-center mb-2">
-              <div className="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
-                TravAI
+              <div className="flex items-center justify-center">
+              <img src="/logo.png" width="100"  alt="travai official logo" />
+
               </div>
               <p className="text-sm text-muted-foreground">
                 {step === 1 ? "Create your account" : "Almost there"}
@@ -77,7 +79,7 @@ export default function SignupPage() {
                 <div
                   key={i}
                   className={`h-1.5 w-12 rounded-full transition-all ${
-                    i <= step ? "bg-gradient-to-r from-blue-600 to-purple-600" : "bg-slate-300 dark:bg-slate-700"
+                    i <= step ? "bg-gradient-to-r from-[#081ab3] to-[#000] " : "bg-slate-300 dark:bg-slate-700"
                   }`}
                 />
               ))}
@@ -183,7 +185,7 @@ export default function SignupPage() {
                 )}
                 <Button
                   type="submit"
-                  className="flex-1 h-10 cursor-pointer text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                  className="flex-1 h-10 cursor-pointer text-sm font-semibold bg-gradient-to-r from-[#081ab3] to-[#000] hover:scale-[1.03] text-white"
                   disabled={isLoading || (step === 1 && !isStep1Valid) || (step === 2 && !isStep2Valid)}
                 >
                   {isLoading ? "Creating..." : step === 1 ? "Next" : "Create Account"}
@@ -212,13 +214,22 @@ export default function SignupPage() {
             {/* Login link */}
             <p className="text-center mt-5 text-xs text-muted-foreground">
               Already have an account?{" "}
-              <Link href="/login" className="font-medium cursor-pointer text-blue-600 hover:underline">
-                Sign in
+              <Link href="/login" className="font-medium cursor-pointer text-[#081ab3 ] hover:underline">
+                Login
               </Link>
             </p>
           </div>
         </Card>
       </motion.div>
     </div>
+
+    {showSuccess && (
+  <SuccessModal
+    isOpen={showSuccess}
+    type="signup"
+    onClose={() => setShowSuccess(false)}
+  />
+)}
+   </>
   )
 }

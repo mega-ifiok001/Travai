@@ -2,10 +2,10 @@
 import { DollarSign, Users, Clock, CheckCircle } from "lucide-react";
 
 const stages = [
-  { stage: "New", count: 142, value: "$42K", color: "bg-blue-500" },
-  { stage: "Contacted", count: 89, value: "$28K", color: "bg-yellow-500" },
-  { stage: "Qualified", count: 44, value: "$18K", color: "bg-purple-500" },
-  { stage: "Meeting Booked", count: 18, value: "$36K", color: "bg-green-500" },
+  { stage: "New", count: 142, value: "$42K", color: "bg-[#081ab3]" },
+  { stage: "Contacted", count: 89, value: "$28K", color: "bg-[#081ab3]" },
+  { stage: "Qualified", count: 44, value: "$18K", color: "bg-[#081ab3]" },
+  { stage: "Meeting Booked", count: 18, value: "$36K", color: "bg-[#081ab3]" },
 ];
 
 export default function PipelineSnapshot() {

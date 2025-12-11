@@ -8,24 +8,27 @@ import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, Eye, EyeOff, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
+import SuccessModal from "@/components/modals/successModal"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      // alert(`Welcome back! Logging in as ${email}`)
-    }, 1200)
+  setTimeout(() => {
+  setIsLoading(false)
+  setShowSuccess(true)  // Show success modal
+}, 1200)
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-black dark:via-slate-950 dark:to-slate-900 flex flex-col relative overflow-hidden">
+  <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-[#d9e0e8] to-[#9ebcde] dark:from-black dark:via-slate-950 dark:to-slate-900 flex flex-col relative overflow-hidden">
       {/* Floating orbs — same as landing */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
         <div className="absolute top-10 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
@@ -48,7 +51,7 @@ export default function LoginPage() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full max-w-md"
         >
-          <Card className="border-0 shadow-2xl backdrop-blur-xl bg-white/80 dark:bg-slate-900/90">
+          <Card className="border-0 shadow-2xl backdrop-blur-xl bg-[#fff] dark:bg-slate-900/90">
             <div className="py-1 px-5">
               {/* Logo + Greeting */}
               <div className="text-center mb-10">
@@ -58,27 +61,25 @@ export default function LoginPage() {
                   transition={{ duration: 0.5 }}
                   className="inline-block mb-1"
                 >
-                  <div className="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    TravAI
-                  </div>
+                 <img src="/logo.png" width='120' alt="Travai Official Logo" />
                 </motion.div>
 
-                <h1 className="text-2xl font-bold text-foreground mb-1">Welcome back</h1>
+                <h1 className="text-xl font-bold text-foreground mb-1">Welcome back</h1>
                 <p className="text-muted-foreground text-md">
                   Your AI team is ready when you are
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="  space-y-4">
+              <form onSubmit={handleSubmit} className="  space-y-1">
                 {/* Email */}
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label htmlFor="email" className="text-foreground font-medium">
                     Email
                   </Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="you@company.com"
+                    placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -109,7 +110,7 @@ export default function LoginPage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition"
+                      className="absolute cursor-pointer hover:scale-[1.02] right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition"
                     >
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
@@ -118,7 +119,7 @@ export default function LoginPage() {
 
                 {/* Remember me */}
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" id="remember" className="w-3 h-3 rounded text-blue-600" />
+                  <input type="checkbox" id="remember" className="cursor-pointer   w-3 h-3 rounded text-blue-600" />
                   <label htmlFor="remember" className="text-foreground text-sm cursor-pointer">
                     Keep me signed in
                   </label>
@@ -127,15 +128,14 @@ export default function LoginPage() {
                 {/* Submit */}
                 <Button
                   type="submit"
-                  className="w-full h-10 cursor-pointer text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
+                  className="w-full h-10 cursor-pointer text-lg font-semibold bg-gradient-to-r from-[#081ab3] to-[#000] hover:scale-[1.03] text-white shadow-lg"
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    "Signing you in..."
+                    "Logging in..."
                   ) : (
                     <>
-                      Sign In
-                      <Sparkles className="ml-2 h-5 w-5" />
+                     Log in 
                     </>
                   )}
                 </Button>
@@ -154,7 +154,7 @@ export default function LoginPage() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full h-10 text-foreground font-medium backdrop-blur-xl"
+                  className="w-full h-10 text-foreground cursor-pointer font-medium backdrop-blur-xl"
                   disabled={isLoading}
                 >
                   <svg className="mr-3 h-5 w-5" viewBox="0 0 24 24">
@@ -183,18 +183,28 @@ export default function LoginPage() {
               <p className="text-center text-sm mt-2 text-muted-foreground">
                 New to TravAI?{" "}
                 <Link href="/signup" className="font-semibold text-blue-600 hover:underline">
-                  Create your account — it’s free
+                  Create your free account
                 </Link>
               </p>
             </div>
           </Card>
 
           {/* Subtle trust line */}
-          <p className="text-center mt-1 text-sm text-muted-foreground">
+          <p className="text-center mt-1 text-sm text-black-foreground">
             Thousands of businesses trust TravAI every day
           </p>
         </motion.div>
       </div>
     </div>
+
+
+{showSuccess && (
+  <SuccessModal
+    isOpen={showSuccess}
+    type="login"
+    onClose={() => setShowSuccess(false)}
+  />
+)}
+  </>
   )
 }

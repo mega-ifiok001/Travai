@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Zap, Target, MessageSquare, BarChart3, CheckCircle2, Sparkles, Users, Mail, Send, TrendingUp } from "lucide-react"
+import { ArrowRight, Zap, Target, MessageSquare, BarChart3, CheckCircle2, Sparkles, Users, Phone, Mail, Send, TrendingUp, Headphones, Inbox, FileText } from "lucide-react"
 import Link from "next/link"
 import { useInView } from "react-intersection-observer"
 import { Crown } from "lucide-react";
 
-
 export default function Home() {
   const [heroRef, heroInView] = useInView({ triggerOnce: true })
   const [featuresRef, featuresInView] = useInView({ triggerOnce: true })
+  const [howRef, howInView] = useInView({ triggerOnce: true })
   const [pricingRef, pricingInView] = useInView({ triggerOnce: true })
 
   const container = {
@@ -46,14 +46,15 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               className="text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
             >
-              TravAI
+            <img src='/logo.png' width="120" alt='travai official logo'/>
             </motion.div>
             <div className="hidden md:flex items-center gap-8">
               <Link href="#features" className="text-foreground/80 hover:text-primary transition font-medium">Features</Link>
+              <Link href="#how" className="text-foreground/80 hover:text-primary transition font-medium">How it Works</Link>
               <Link href="#pricing" className="text-foreground/80 hover:text-primary transition font-medium">Pricing</Link>
               <Link href="/login" className="text-foreground/80 hover:text-primary transition font-medium">Login</Link>
               <Link href="/signup">
-                <Button className="bg-gradient-to-r  cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
+                <Button className="bg-gradient-to-r cursor-pointer from-[#081ab3] to-[#000] hover:scale-[1.03] text-white shadow-lg">
                   Start Free Trial
                 </Button>
               </Link>
@@ -61,7 +62,7 @@ export default function Home() {
           </div>
         </motion.nav>
 
-        {/* Hero Section */}
+        {/* Hero Section - UNCHANGED TEXT AS PER INSTRUCTION */}
         <section ref={heroRef} className="pt-32 pb-20 px-6">
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
@@ -70,32 +71,31 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
-             
                 AI Sales and Marketing Team That Never Sleeps
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black text-balance bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight mb-8">
+              <h1 className="text-5xl md:text-7xl font-black text-balance bg-gradient-to-r from-[#000] via-[#081ab3] to-[#081ab3] dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight mb-8">
                 Your Entire Sales Team<br />
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#a6bbd3] via-[#081ab3] to-[#000000] bg-clip-text text-transparent">
                   Runs on Autopilot
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-10 leading-relaxed">
+              <p className="text-md md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-10 leading-relaxed">
                 Generate hyper-targeted leads • Send personalized cold emails & DMs • Follow up like a pro • Book meetings automatically
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
-                <Link href="/signup">
-                  <Button size="lg" className="h-14  cursor-pointer px-10 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group">
-                    Start 14-Day Free Trial
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition" />
-                  </Button>
-                </Link>
-                <Button size="lg" variant="outline" className="h-14 px-10 text-lg backdrop-blur-xl">
-                  Watch Demo <span className="ml-2">▶</span>
-                </Button>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
+  <Link href="/signup">
+    <Button size="lg" className="h-12 hover:shadow-lg cursor-pointer px-10 text-md font-semibold bg-gradient-to-r from-[#081ab3] to-[#000] hover:scale-[1.03] text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group">
+      Start 14-Day Free Trial
+      <ArrowRight className="ml-2 group-hover:translate-x-1 transition" />
+    </Button>
+  </Link>
+  <Button size="lg" variant="outline" className="h-12 hover:shadow-lg cursor-pointer px-10 text-lg backdrop-blur-xl">
+    Watch Demo <span className="ml-2">▶</span>
+  </Button>
+</div>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -104,45 +104,38 @@ export default function Home() {
                 className="relative mx-auto max-w-5xl mt-20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-3xl" />
-                {/* <img 
-                  src="/dashboard-preview.png" 
-                  alt="TravAI Dashboard" 
-                  className="relative rounded-2xl shadow-2xl border border-white/20"
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/OhZPwAI/AL+1q7v2QAAAABJRU5ErkJggg=="
-                /> */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-xl opacity-30" />
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section ref={featuresRef} id="features" className="py-24 px-6 bg-white/50 dark:bg-black/50 backdrop-blur-sm">
+        {/* Core Features - Aligned with MVP PRD */}
+        <section ref={featuresRef} id="features" className="py-2 px-6 bg-white/50 dark:bg-black/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto">
             <motion.div variants={container} initial="hidden" animate={featuresInView ? "show" : "hidden"}>
               <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">Everything You Need to Scale</h2>
-                <p className="text-xl text-muted-foreground">One platform. Zero employees. Infinite growth.</p>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">Core Features That Close Deals for You</h2>
+                <p className="text-xl text-muted-foreground">One platform that calls, texts, manages leads, and closes clients automatically.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                  { icon: Target, title: "Hyper-Targeted Leads", desc: "AI finds your perfect customers across Google, LinkedIn, Maps & more" },
-                  { icon: Mail, title: "Personalized Outreach", desc: "1-click AI writes emails & DMs that feel human — 43% avg reply rate" },
-                  { icon: Send, title: "Smart Follow-Ups", desc: "Never miss a lead. AI follows up 7+ times at perfect timing" },
-                  { icon: MessageSquare, title: "Auto Reply & Book", desc: "AI answers questions and books meetings directly into your calendar" },
-                  { icon: BarChart3, title: "Real-Time Analytics", desc: "See reply rates, pipeline value, and ROI in one beautiful dashboard" },
-                  { icon: Users, title: "Works for Any Business", desc: "Agencies, coaches, SaaS, e-com, local services — all crushing it" },
+                  { icon: Headphones, title: "AI Voice Agent", desc: "Makes outbound calls, handles conversations, answers FAQs, and books meetings automatically" },
+                  { icon: Target, title: "Lead Capture & Import", desc: "Capture leads from website forms, upload files, or connect integrations seamlessly" },
+                  { icon: Send, title: "Outreach Automation", desc: "Multi-channel sequences via Email, SMS, and WhatsApp with personalized messaging" },
+                  { icon: Inbox, title: "AI Chat Inbox", desc: "Instant AI-powered replies to incoming messages across all channels" },
+                  { icon: FileText, title: "Call Recording & Transcripts", desc: "Automatically log every conversation with full transcripts for review" },
+                  { icon: BarChart3, title: "CRM Dashboard & Analytics", desc: "Track pipeline stages, contact activity, call performance, and lead status in real-time" },
                 ].map((feature, i) => (
                   <motion.div
                     key={i}
                     variants={item}
-                    whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                    whileHover={{ y: -10, transition: { duration: 0.1 } }}
                     className="group relative p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:shadow-2xl transition-all duration-500"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition" />
-                    <feature.icon className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition" />
+                    <feature.icon className="h-12 w-12 text-[#081ab3] mb-4 group-hover:scale-110 transition" />
                     <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                     <p className="text-muted-foreground">{feature.desc}</p>
                   </motion.div>
@@ -152,12 +145,46 @@ export default function Home() {
           </div>
         </section>
 
-     {/* NEW SIMPLIFIED PRICING — ONLY 2 TIERS */}
+        {/* How It Works - Based on User Flow in PRD */}
+        <section ref={howRef} id="how" className="py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">How Travai Works</h2>
+              <p className="text-xl text-muted-foreground">From lead import to booked meetings — fully automated in minutes.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { step: "1", title: "Import Leads", desc: "Upload your list or connect lead forms", icon: Users },
+                { step: "2", title: "Set Campaign", desc: "Choose call, SMS, email, or multi-channel sequences", icon: Zap },
+                { step: "3", title: "AI Outreach Begins", desc: "Voice agents call, messages go out, responses handled", icon: Phone },
+                { step: "4", title: "Close & Track", desc: "Meetings booked, pipeline updated, performance tracked", icon: TrendingUp },
+              ].map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2 }}
+                  className="text-center"
+                >
+                 
+                  <step.icon className="h-12 w-12 mx-auto mb-4 text-[#081ab3]" />
+                  <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground">{step.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing - Kept structure, updated copy slightly to match product focus */}
         <section ref={pricingRef} id="pricing" className="py-32 px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">One Price. Zero Limits.</h2>
-              <p className="text-2xl text-muted-foreground">We don’t nickel-and-dime you. Ever.</p>
+               <h1 className="text-3xl md:text-5xl font-black text-balance bg-gradient-to-r from-[#000] via-[#081ab3] to-[#081ab3] dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent leading-tight mb-8">
+                Simple, Transparent Pricing    
+              </h1>
+              <p className="text-xl text-muted-foreground">Everything you need to automate your sales,  no hidden fees.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
@@ -173,7 +200,7 @@ export default function Home() {
                   <span className="text-muted-foreground"> / forever</span>
                 </div>
                 <ul className="space-y-4 mb-10">
-                  {["100 leads per month", "AI message writer", "Email outreach", "Basic analytics", "Community support"].map((item) => (
+                  {["Limited leads & outreach", "Basic AI voice & messaging", "Email sequences", "Core dashboard", "Community support"].map((item) => (
                     <li key={item} className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5 text-green-500" />
                       <span>{item}</span>
@@ -181,39 +208,39 @@ export default function Home() {
                   ))}
                 </ul>
                 <Link href="/signup">
-                  <Button variant="outline" className="cursor-pointer   w-full h-12 text-lg font-semibold">
+                  <Button variant="outline" className="cursor-pointer w-full h-12 text-lg font-semibold">
                     Get Started Free
                   </Button>
                 </Link>
               </motion.div>
 
-              {/* PRO PLAN — $200/mo — EVERYTHING */}
+              {/* PRO PLAN */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                className="relative rounded-3xl p-5 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white shadow-2xl scale-105"
+                className="relative rounded-3xl p-5 bg-gradient-to-br from-[#081ab3] to-[#000] hover:scale-[1.03] text-white shadow-2xl scale-105"
               >
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2">
                   <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                    <Crown className="h-5 w-5" /> BEST VALUE
+                    <Crown className="h-5 w-5" /> RECOMMENDED
                   </div>
                 </div>
 
-                <h3 className="text-2xl mt-4 font-black mb-2">Pro — Everything Unlimited</h3>
+                <h3 className="text-2xl mt-4 font-black mb-2">Pro — Full AI Sales Team</h3>
                 <div className="mb-3">
                   <span className="text-4xl font-black">$200</span>
                   <span className="text-xl opacity-90"> / month</span>
                 </div>
-                <p className="text-sm opacity-90 mb-3">The full AI sales team. No limits. No surprises.</p>
+                <p className="text-sm opacity-90 mb-3">Unlimited everything. The complete automation platform.</p>
 
                 <ul className="space-y-2 mb-3">
                   {[
                     "Unlimited leads & outreach",
-                    "All channels (Email, LinkedIn, WhatsApp, SMS)",
-                    "AI replies & auto-booking",
-                    "Full analytics + revenue tracking",
-                    "Team seats included",
-                    "Priority 1-hour support",
+                    "AI Voice Agent + all messaging channels",
+                    "Full CRM, pipeline & analytics",
+                    "Call recordings & transcripts",
+                    "AI chat inbox & auto-replies",
+                    "Priority support",
                     "Cancel anytime"
                   ].map((item) => (
                     <li key={item} className="flex text-sm items-center gap-3">
@@ -224,7 +251,7 @@ export default function Home() {
                 </ul>
 
                 <Link href="/signup">
-                  <Button className=" cursor-pointer w-full h-10 text-lg font-bold bg-white text-blue-600 hover:bg-gray-100 shadow-xl">
+                  <Button className="cursor-pointer w-full h-10 text-lg font-bold bg-white text-[#081ab3] hover:bg-gray-100 shadow-xl">
                     Start 14-Day Free Trial
                   </Button>
                 </Link>
@@ -238,33 +265,26 @@ export default function Home() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+        <section className="py-10 px-6 bg-gradient-to-r from-[#081ab3] to-[#000] ">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
-                Ready to 10x Your Pipeline?
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+                Run Your Sales Like a Large Team, With AI
               </h2>
-              <p className="text-2xl text-white/90 mb-10">
-                Join 8,000+ businesses automating their sales with AI
+              <p className="text-xl text-white/90 mb-10">
+                Join thousands of businesses automating outreach, conversations, and closings.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href="/signup">
-                  <Button size="lg" className="h-16  cursor-pointer px-12 text-xl font-bold bg-white text-blue-600 hover:bg-gray-100 shadow-2xl">
+                  <Button size="lg" className="h-12 hover:shadow-lg hover:scale-[1.03] cursor-pointer px-12 text-xl font-bold bg-white text-blue-600 hover:bg-gray-100 shadow-2xl">
                     Start Free Trial (14 Days)
                   </Button>
                 </Link>
                 <div className="flex items-center justify-center gap-8 text-white/80">
-                  <div className="flex -space-x-3">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-12 h-12 rounded-full bg-white/30 border-2 border-white flex items-center justify-center text-lg font-bold">
-                        {i + 1}
-                      </div>
-                    ))}
-                  </div>
                   <p className="text-lg">No credit card required</p>
                 </div>
               </div>
@@ -272,8 +292,8 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="py-12 text-center text-muted-foreground">
-          <p>© 2025 TravAI. All rights reserved.</p>
+        <footer className="py-4 text-center text-black-foreground">
+          <p>© 2025 Travai. All rights reserved.</p>
         </footer>
       </div>
     </>

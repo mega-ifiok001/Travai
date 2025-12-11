@@ -1,6 +1,6 @@
 // components/dashboard/MeetingPreview.tsx
 import { Calendar, Clock, User } from "lucide-react";
-
+ import Link from "next/link";
 const meetings = [
   { time: "10:30 AM", name: "Sarah Chen", company: "TechCorp", type: "Discovery Call" },
   { time: "2:00 PM", name: "Mike Johnson", company: "StartupXYZ", type: "Demo" },
@@ -11,7 +11,24 @@ export default function MeetingPreview() {
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-lg font-semibold text-gray-900">Upcoming Meetings</h3>
-        <Calendar className="w-5 h-5 text-gray-500" />
+        <Calendar className="w-5 h-5 text-gray-500"  />
+<Link href="/dashboard/meeting">
+  <button
+    className="
+      bg-[#081ab3]
+     hover:bg-gradient-to-r hover:from-[#081ab3] hover:to-[#000]
+      text-white
+      cursor-pointer
+      p-1 h-7 px-2
+      rounded-md text-xs
+      transition-colors duration-300 ease-in-out
+    "
+  >
+    View more
+  </button>
+</Link>
+
+
       </div>
       <div className="space-y-4">
         {meetings.map((m) => (

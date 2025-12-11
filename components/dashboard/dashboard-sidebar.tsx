@@ -80,15 +80,13 @@ export function DashboardSidebar() {
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="p-3 border-b border-slate-200 dark:border-slate-800">
+          <div className="p-3  dark:border-slate-800">
             <Link href="/dashboard" className="flex items-center gap-3" onClick={() => setIsMobileOpen(false)}>
               {/* <div className="p-2.5 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl">
                 <Sparkles className="h-6 w-6 text-white" />
               </div> */}
               <div>
-                <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  TravAI
-                </h1>
+               <img src="/logo.png" width="120"  alt="official logo" />
                 {/* <p className="text-xs text-muted-foreground -mt-0.5">AI Sales Team</p> */}
               </div>
             </Link>
@@ -117,7 +115,7 @@ export function DashboardSidebar() {
                   >
                     {/* Active background gradient */}
                     {active && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-sm -z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#081ab3] to-[#000] hover:scale-[1.03] rounded-sm -z-10" />
                     )}
 
                     <Icon className={cn("h-5 w-5 relative z-10", active && "text-white")} />

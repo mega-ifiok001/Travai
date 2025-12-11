@@ -1,6 +1,6 @@
 import type React from "react"
 import { AdminSidebar } from "@/components/admin-sidebar"
-import { DashboardHeader } from "@/components/dashboard-header"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 
 export default function AdminLayout({
   children,
